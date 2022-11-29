@@ -1,7 +1,9 @@
 import express, { Request, Response } from "express";
 
-export const server = express();
+const server = express();
 
-server.get("/", (req: Request, res: Response) =>{
-    res.send("Sucessor")
-})
+server.get("/", (req: Request, res: Response) => {
+  res.json({ mensagem: "Setup finalizado com sucessor." });
+});
+
+export { server };
