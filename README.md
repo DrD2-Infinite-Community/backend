@@ -2,7 +2,7 @@
 
 > Plataforma de compartilhamento de vídeo
 
-<img align="right" width="240px" src="https://o.remove.bg/downloads/749e71a3-2c7a-498e-864e-d2fc2ddf2273/wacth-removebg-preview.png">
+<img align="right" width="240px" src="https://github.com/Johnson49/biblioteca/blob/main/girl-tv.png?raw=true">
 
 Este aplicativo será uma plataforma de compartilhamento de vídeo, onde um usuário poderá compartilhar vídeos, criar listas de reprodução, gostar ou não gostar de um vídeo, comentar em um vídeo etc.
 
