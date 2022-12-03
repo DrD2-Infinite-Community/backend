@@ -1,4 +1,4 @@
-# 𝘿𝙧𝘿2 𝙄𝙣𝙛𝙞𝙣𝙞𝙩𝙚 ★ <sup>★</sup>
+# DrD2 Infinite
 
 > Plataforma de compartilhamento de vídeo
 
