@@ -1,5 +1,10 @@
 import mongoose from 'mongoose';
 
+export type User = {
+  username: string,
+  password: string
+} 
+
 const userSchema = new mongoose.Schema({
   username: {
     type: String,
@@ -21,6 +26,6 @@ userSchema.set('toJSON', {
   }
 })
 
-const User = mongoose.model('User', userSchema)
+const UserModel = mongoose.model('User', userSchema)
 
-export default User
+export default UserModel
