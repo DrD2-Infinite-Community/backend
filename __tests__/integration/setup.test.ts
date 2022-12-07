@@ -1,5 +1,6 @@
 import { StatusCodes } from "http-status-codes";
-import { testServer } from "../jest.setup";
+import { testServer } from "../vitest.setup";
+import { describe, it, expect } from "vitest";
 
 describe("🧪 Testado se o as configurações iniciais do projeto foi realizada com sucessor.", () => {
   it("Deverá receber uma mensagem de sucessor.", async () => {
