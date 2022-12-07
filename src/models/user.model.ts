@@ -1,31 +1,40 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
-export type User = {
+export interface User {
   username: string,
-  password: string
-} 
+  password: string,
+  email: string;
+};
 
 const userSchema = new mongoose.Schema({
   username: {
     type: String,
-    required: [true, 'Username obrigatório'],
-    minlength: [4, 'O nome do usuário deve ter no mínimo 4 caracteres']
+    unique: true,
+    required: [true, "Username obrigatório"],
+    minlength: [4, "O nome do usuário deve ter no mínimo 4 caracteres"]
   },
-  password: { 
+  email: {
     type: String,
-    required: true
-  }
-})
+    required: true,
+    lowercase: true,
+    unique: true
+  },
+  password: {
+    type: String,
+    required: true,
+    minlength:  [7, "O nome do usuário deve ter no mínimo 4 caracteres"]
+  },
+});
 
-userSchema.set('toJSON', {
+userSchema.set("toJSON", {
   transform: (document, returnedObj) => {
-    returnedObj.id = returnedObj._id.toString()
-    delete returnedObj._id
-    delete returnedObj.__v
-    delete returnedObj.password
-  }
-})
+    returnedObj.id = returnedObj._id.toString();
+    delete returnedObj._id;
+    delete returnedObj.__v;
+    delete returnedObj.password;
+  },
+});
 
-const UserModel = mongoose.model('User', userSchema)
+const UserModel = mongoose.model("User", userSchema);
 
-export default UserModel
+export default UserModel;
