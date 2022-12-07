@@ -1,4 +1,4 @@
-import UserModel, { User } from "../models/User.model";
+import UserModel, { User } from "../models/user.model";
 
 export async function createUser(user:User) {
   return await UserModel.create(user)
