@@ -1,9 +1,10 @@
-import express, { Request, Response } from "express";
+import express from "express";
+import { connectDatabase } from "../database/db.connection";
+import { router } from "../routes/user.routes";
 
-const server = express();
+export const server = express();
+server.use(express.json());
 
-server.get("/", (req: Request, res: Response) => {
-  res.json({ mensagem: "Setup finalizado com sucessor." });
-});
+connectDatabase();
 
-export { server };
+server.use(router);
