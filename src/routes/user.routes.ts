@@ -1,9 +1,10 @@
-import { Request, Response, Router } from "express";
+import { Router } from "express";
 import { create, getAll } from "../controllers/user.controller";
-import { userExists } from "../middlewares/userExists.middlewares";
+import { userExists } from "../middlewares/userExists.middleware";
+import { requestBodyValidator } from "../middlewares/requestBodyValidator.middleware";
 
-export const router = Router();
+export const userRouter = Router();
 
-router.get("/api/v1/user", getAll);
+userRouter.get("/api/v1/user", getAll);
 
-router.post("/api/v1/user", userExists, create);
+userRouter.post("/api/v1/user", requestBodyValidator, userExists, create);
