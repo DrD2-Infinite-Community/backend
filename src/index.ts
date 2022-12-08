@@ -1,3 +1,3 @@
-import { server } from "./server/server";
+import { server } from "./server";
 
 server.listen(3000, () => console.log("server running on port 3000"));
