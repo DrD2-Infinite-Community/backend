@@ -1,32 +1,32 @@
-import { StatusCodes } from "http-status-codes";
 import { testServer } from "../vitest.setup";
-import { describe, it, expect, beforeEach, afterEach } from "vitest";
-import mongoose from "mongoose";
-import * as dotenv from "dotenv";
+import { describe, it, expect } from "vitest";
 
-dotenv.config();
-
-const mongo = "";
-
-beforeEach(async () => {
-  await mongoose.connect(mongo);
-});
-
-/* Closing database connection after each test. */
-afterEach(async () => {
-  await mongoose.connection.close();
-});
-
-describe("🧪 Testado se o as configurações iniciais do projeto foi realizada com sucessor.", () => {
-  it("Deverá receber uma mensagem de sucessor.", async () => {
-    const response = await testServer.get("/api/v1/user");
-
-    expect(response.statusCode).toEqual(StatusCodes.OK);
+describe("🧪 Rota user", () => {
+  it("Deve criar um usuário", async () => {
+    await testServer
+      .post("/api/v1/user")
+      .send({ username: "Mario Silvo", email: "mario@outlook.com", password: "sal123Acucar" })
+      .expect("Content-Type", /json/)
+      .expect(201)
+      .then((res) => {
+        expect(res.body).to.have.property("username", "Mario Silvo");
+      });
   });
 
-  it("Deverá receber uma mensagem de sucessor.", async () => {
-    const response = await testServer.post("/api/v1/user");
-
-    expect(response.statusCode).toEqual(StatusCodes.CREATED);
+  it("Deve retornar todos os usuários", async () => {
+    await testServer
+      .get("/api/v1/user")
+      .expect(200)
+      .expect("Content-Type", /json/)
+      .then((res) => {
+        expect(res.body).toEqual(
+          expect.arrayContaining([
+            expect.objectContaining({
+              username: "Mario Silvo",
+              email: "mario@outlook.com",
+            }),
+          ])
+        );
+      });
   });
 });
