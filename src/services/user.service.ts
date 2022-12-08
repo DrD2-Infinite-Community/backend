@@ -1,33 +1,33 @@
 import UserModel, { User } from "../models/user.model";
 
-export async function createUser(user: User) {
+export const createUser = async (user: User) => {
   return await UserModel.create({
     username: user.username,
     email: user.email,
     password: user.password,
   });
-}
+};
 
-export async function getAllUsers() {
+export const getAllUsers = async () => {
   return await UserModel.find();
-}
+};
 
-export async function getAUserEmail(email: string) {
+export const getAUserEmail = async (email: string) => {
   return await UserModel.findOne({ email: email });
-}
+};
 
-export async function getAUserUsername(username: string) {
+export const getAUserUsername = async (username: string) => {
   return await UserModel.findOne({ username: username });
-}
+};
 
-export async function getUserById(id: number) {
+export const getUserById = async (id: string) => {
   return await UserModel.findById(id);
-}
+};
 
-export async function updateUser(id: number, user: User) {
+export const updateUser = async (id: string, user: User) => {
   return await UserModel.findByIdAndUpdate(id, user);
-}
+};
 
-export async function deleteUser(id: number) {
+export const deleteUser = async (id: string) => {
   return await UserModel.findByIdAndDelete(id);
-}
+};
