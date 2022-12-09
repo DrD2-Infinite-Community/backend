@@ -25,7 +25,7 @@ export const getUserById = async (id: string) => {
 };
 
 export const updateUser = async (id: string, user: User) => {
-  return await UserModel.findByIdAndUpdate(id, user);
+  return await UserModel.findByIdAndUpdate(id, user, { returnDocument: "after" });
 };
 
 export const deleteUser = async (id: string) => {
