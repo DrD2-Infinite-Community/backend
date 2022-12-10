@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-
+import bcrypt from "bcrypt";
 export interface User {
   username: string;
   password: string;
@@ -24,6 +24,11 @@ const userSchema = new mongoose.Schema({
     required: true,
     minlength: [7, "O nome do usuário deve ter no mínimo 4 caracteres"],
   },
+});
+
+userSchema.pre("save", function (next) {
+  this.password = bcrypt.hashSync(this.password, 10);
+  next();
 });
 
 userSchema.set("toJSON", {
