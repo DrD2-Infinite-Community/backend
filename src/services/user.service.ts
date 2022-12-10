@@ -1,10 +1,13 @@
 import UserModel, { User } from "../models/user.model";
 
 export const createUser = async (user: User) => {
+  const username = user.username.trim();
+  const password = user.password.replace(/ /g, "");
+
   return await UserModel.create({
-    username: user.username,
+    username: username,
     email: user.email,
-    password: user.password,
+    password: password,
   });
 };
 
@@ -25,9 +28,26 @@ export const getUserById = async (id: string) => {
 };
 
 export const updateUser = async (id: string, user: User) => {
-  return await UserModel.findByIdAndUpdate(id, user, { returnDocument: "after" });
+  const username = user.username.trim();
+  const password = user.password.replace(/ /g, "");
+
+  return await UserModel.findByIdAndUpdate(
+    id,
+    {
+      username: username,
+      email: user.email,
+      password: password,
+    },
+    { returnDocument: "after" }
+  );
 };
 
 export const deleteUser = async (id: string) => {
-  return await UserModel.findByIdAndDelete(id);
+  await UserModel.findByIdAndDelete(id);
+  const userFound = await getUserById(id);
+  if (userFound) {
+    return false;
+  }
+
+  return true;
 };
