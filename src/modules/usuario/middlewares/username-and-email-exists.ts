@@ -1,6 +1,6 @@
 import { RequestHandler } from "express";
 import { StatusCodes } from "http-status-codes";
-import { getAUserEmail, getAUserUsername } from "../services/user.service";
+import { getAUserEmail, getAUserUsername } from "../services/user";
 
 export const usernameAndEmailExists: RequestHandler = async (req, res, next) => {
   const { email, username } = req.body;

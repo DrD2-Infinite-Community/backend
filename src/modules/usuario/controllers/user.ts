@@ -1,10 +1,4 @@
-import {
-  createUser,
-  deleteUser,
-  getAllUsers,
-  getUserById,
-  updateUser,
-} from "../services/user.service";
+import { createUser, deleteUser, getAllUsers, getUserById, updateUser } from "../services/user";
 
 import { Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";

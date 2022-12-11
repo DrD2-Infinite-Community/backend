@@ -1,6 +1,6 @@
 import { StatusCodes } from "http-status-codes";
 import { RequestHandler } from "express";
-import { getUserById } from "../services/user.service";
+import { getUserById } from "../services/user";
 
 export const userExists: RequestHandler = async (req, res, next) => {
   const { id } = req.params;

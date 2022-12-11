@@ -1,10 +1,5 @@
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
-export interface User {
-  username: string;
-  password: string;
-  email: string;
-}
 
 const userSchema = new mongoose.Schema({
   username: {
@@ -40,6 +35,4 @@ userSchema.set("toJSON", {
   },
 });
 
-const UserModel = mongoose.model("User", userSchema);
-
-export default UserModel;
+export const UserModel = mongoose.model("User", userSchema);

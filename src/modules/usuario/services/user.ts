@@ -1,4 +1,6 @@
-import UserModel, { User } from "../models/user.model";
+import { User } from "../interface/user";
+import { UserModel } from "../models/user";
+import bcrypt from "bcrypt";
 
 export const createUser = async (user: User) => {
   const username = user.username.trim();
@@ -29,7 +31,8 @@ export const getUserById = async (id: string) => {
 
 export const updateUser = async (id: string, user: User) => {
   const username = user.username.trim();
-  const password = user.password.replace(/ /g, "");
+  let password = user.password.replace(/ /g, "");
+  password = await bcrypt.hash(password, 10);
 
   return await UserModel.findByIdAndUpdate(
     id,
