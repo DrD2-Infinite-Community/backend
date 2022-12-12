@@ -1,4 +1,5 @@
 import "dotenv/config";
+import "./modules/usuario/translation/TranslationsYup";
 import express from "express";
 import { connectCloudDatabase } from "./database/cloud-db";
 import { connectMemoryDatabase } from "./database/in-memory-db";
